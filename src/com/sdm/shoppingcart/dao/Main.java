@@ -18,6 +18,8 @@ public class Main {
 		System.out.println(product);
 		
 		productDao.getById(product.getId());
+		
+		productDao.getAll();
 	}
 
 }

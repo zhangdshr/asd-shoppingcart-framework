@@ -1,5 +1,7 @@
 package com.sdm.shoppingcart.jdbc;
 
+import java.util.List;
+
 import com.sdm.shoppingcart.jdbc.db.DataBase;
 import com.sdm.shoppingcart.jdbc.db.IDataBase;
 import com.sdm.shoppingcart.jdbc.db.IDataBaseDomain;
@@ -32,6 +34,12 @@ public class JdbcMemoryManager implements IJdbcManager {
 	public IDataBaseDomain getItemById(long id) {
 		// TODO Auto-generated method stub
 		return dataBase.getItemById(id);
+	}
+	
+	@Override
+	public List<IDataBaseDomain> getAll() {
+		// TODO Auto-generated method stub
+		return dataBase.getAll();
 	}
 
 }

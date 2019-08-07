@@ -1,7 +1,13 @@
 package com.sdm.shoppingcart.dao;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
 import com.sdm.shoppingcart.jdbc.IJdbcManager;
 import com.sdm.shoppingcart.jdbc.JdbcMemoryManager;
+import com.sdm.shoppingcart.jdbc.db.DBLog;
+import com.sdm.shoppingcart.jdbc.db.IDataBaseDomain;
 import com.sdm.shoppingcart.model.Product;
 
 public class ProductDao implements InterfaceDao<Product> {
@@ -17,7 +23,7 @@ public class ProductDao implements InterfaceDao<Product> {
 	public Product save(Product t) {
 		// TODO Auto-generated method stub
 		Product product2 = (Product) manager.addItem(t);
-		DaoLog.log("save by DAO:", t);
+		DBLog.log("save by DAO:", t);
 		return product2;
 	}
 
@@ -25,23 +31,31 @@ public class ProductDao implements InterfaceDao<Product> {
 	public void remove(long id) {
 		// TODO Auto-generated method stub
 		manager.removeItemWithId(id);
-		DaoLog.log("save by DAO:", id);
+		DBLog.log("save by DAO:", id);
 	}
 
 	@Override
 	public void update(Product t) {
 		// TODO Auto-generated method stub
 		manager.updateItem(t);
-		DaoLog.log("update by DAO:", t);
+		DBLog.log("update by DAO:", t);
 	}
 
 	@Override
 	public Product getById(long id) {
 		// TODO Auto-generated method stub
 		Product product = (Product) manager.getItemById(id);
-		DaoLog.log("get by DAO:", product);
+		DBLog.log("get by DAO:", product);
 		return product;
 	}
 
-
+	@Override
+	public List<Product> getAll() {
+		// TODO Auto-generated method stub
+		List<IDataBaseDomain> domains = manager.getAll();
+		List presenter = domains;
+		List<Product> list = presenter;
+		DBLog.log("get all by DAO count:", list.size());
+		return list;
+	}
 }
