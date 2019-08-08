@@ -34,8 +34,12 @@ public class DataBase implements IDataBase {
 	@Override
 	public void updateItem(IDataBaseDomain t) {
 		// TODO Auto-generated method stub
-		data.replace(t.getId(), t);
-		DBLog.log("UPDATE TO DB:", t);
+		if (t.getId() < 1) {
+			addItem(t);
+		} else {
+			data.replace(t.getId(), t);
+			DBLog.log("UPDATE TO DB:", t);
+		}
 	}
 
 	@Override

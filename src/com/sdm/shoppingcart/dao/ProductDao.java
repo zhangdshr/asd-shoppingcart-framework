@@ -58,4 +58,17 @@ public class ProductDao implements InterfaceDao<Product> {
 		DBLog.log("get all by DAO count:", list.size());
 		return list;
 	}
+	
+	public List<Product> getProductListByCategoryId(long category_id) {
+		List<Product> domains = getAll();
+		List<Product> list = new ArrayList<Product>();
+		for (Iterator<Product> iterator = domains.iterator(); iterator.hasNext();) {
+			Product product = iterator.next();
+			if (product.categeryId == category_id) {
+				list.add(product);
+			}
+		}
+		DBLog.log("get Product List By CategoryId by DAO count:", list.size());
+		return list;
+	}
 }
