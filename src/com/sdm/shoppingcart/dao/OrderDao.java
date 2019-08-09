@@ -6,6 +6,7 @@ import com.sdm.shoppingcart.jdbc.db.DBLog;
 import com.sdm.shoppingcart.jdbc.db.IDataBaseDomain;
 import com.sdm.shoppingcart.model.Order;
 import com.sdm.shoppingcart.model.OrderState;
+import com.sdm.shoppingcart.model.OrderState.STATE;
 import com.sdm.shoppingcart.model.Product;
 
 import java.util.ArrayList;
@@ -58,10 +59,11 @@ public class OrderDao implements InterfaceDao<Order> {
         return list;
     }
 
-    public OrderState getOrderStateById(long id) {
+    public OrderState getOrderStateByOrderId(long id) {
         Order order = getById(id);
-
-        return order.orderState;
+        OrderState state = order.orderState;
+        DBLog.log("getOrderStateByOrderId", state);
+        return state;
     }
 
     public List<Order> getOrderListByBuyerId(long userid) {
@@ -72,22 +74,22 @@ public class OrderDao implements InterfaceDao<Order> {
             if(userid==r.userId){
                 orders.add(r);
             }
-
         }
+        DBLog.log("getOrderListByBuyerId", orders.size());
         return orders;
     }
 
-    public List<Order> getOrderListByStateId(long stateid) {
+    public List<Order> getOrderListByState(STATE state) {
         // TODO Auto-generated method stub
 
-        List<Order> state = new ArrayList<>();
+        List<Order> orders = new ArrayList<>();
         for (Order s:getAll()) {
-            if(stateid==s.stateId){
-                state.add(s);
+            if(state == s.orderState.state){
+            	orders.add(s);
             }
-
         }
-        return state;
+        DBLog.log("getOrderListByStateId", orders.size());
+        return orders;
     }
 
 

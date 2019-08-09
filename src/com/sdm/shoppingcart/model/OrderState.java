@@ -11,44 +11,46 @@ public class OrderState {
     /**
      * Default constructor
      */
-    public OrderState() {
+    private OrderState() {
     }
 
     /**
      * 
      */
-    public String stateName;
+    public STATE state;
 
     /**
-     * Unpaid : 1
-     * Paid : 2
-     * Shipped : 3
-     * Deliverd : 4
+     * Created : 1
+     * paid : 2
+     * Shipping : 3
+     * recived : 4
      */
-    public int stateId;
 
-//    enum STATE{
-//        UNPAID, PAID, SHIPPMENT, ARRIVED;
-//    }
+    public enum STATE{
+    	CONSTRUCT("constructor", 0),
+        CREATED("created", 1), 
+        PAID("paid", 2), 
+        SHIPPMENT("shipping", 3), 
+        RECIVED("recived", 4);
 
-    public OrderState(String stateName, int stateId) {
-        this.stateName = stateName;
-        this.stateId = stateId;
+    	private String name;
+    	private int index;
+	
+		private STATE(String name, int index) {
+			this.name = name;
+			this.index = index;
+		}
+		
+		@Override
+		public String toString() {
+			// TODO Auto-generated method stub
+			return index + "_" + name;
+		}
+    }
+    
+
+    public OrderState(STATE state) {
+        this.state = state;
     }
 
-    public String getStateName() {
-        return stateName;
-    }
-
-    public void setStateName(String stateName) {
-        this.stateName = stateName;
-    }
-
-    public int getStateId() {
-        return stateId;
-    }
-
-    public void setStateId(int stateId) {
-        this.stateId = stateId;
-    }
 }

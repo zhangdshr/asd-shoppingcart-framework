@@ -4,6 +4,7 @@ import com.sdm.shoppingcart.dao.OrderDao;
 import com.sdm.shoppingcart.dao.ProductDao;
 import com.sdm.shoppingcart.model.Order;
 import com.sdm.shoppingcart.model.OrderState;
+import com.sdm.shoppingcart.model.OrderState.STATE;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -15,9 +16,9 @@ public class OrderAPIImpl implements OrderAPI  {
 
 
 	@Override
-	public OrderState getOrderStateById(long stateid) {
+	public OrderState getOrderStateByOrderId(long stateid) {
 		// TODO Auto-generated method stub
-		return OrderDao.getInstance().getOrderStateById(stateid);
+		return OrderDao.getInstance().getOrderStateByOrderId(stateid);
 	}
 
 	@Override
@@ -26,11 +27,10 @@ public class OrderAPIImpl implements OrderAPI  {
 	}
 
 
-
 	@Override
-	public List<Order>  getOrderListByStateId(long stateid) {
+	public List<Order>  getOrderListByState(STATE state) {
 		// TODO Auto-generated method stub
-		return OrderDao.getInstance().getOrderListByStateId(stateid);
+		return OrderDao.getInstance().getOrderListByState(state);
 	}
 	@Override
 	public void editOrder(Order order) {

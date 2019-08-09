@@ -1,38 +1,58 @@
 package com.sdm.shoppingcart.api;
 
 
-import com.sdm.shoppingcart.dao.OrderDao;
+import com.sdm.shoppingcart.dao.ProductDao;
+import com.sdm.shoppingcart.factory.OrderFactory;
+import com.sdm.shoppingcart.model.Address;
 import com.sdm.shoppingcart.model.Order;
+import com.sdm.shoppingcart.model.OrderItem;
+import com.sdm.shoppingcart.model.Product;
+import com.sdm.shoppingcart.model.OrderState.STATE;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class OrderMain {
     public static void main(String []args){
-        Order order = new Order();
+    	Address address = new Address();
+    	address.state = "Iowa";
+    	address.city = "Fairfield";
+    	address.desc = "1000 N 4TH ST";
+    	address.email = "12345@outlook.com";
+    	
+    	List<OrderItem> items = new ArrayList<OrderItem>();
+    	for (int i = 1; i < 4; i++) {
+    		Product product = new Product();
+    		product.name = "Computer" + i;
+    		product.price = 222 * i;
+    		
+    		ProductDao productDao = ProductDao.getInstance();
+    		productDao.save(product);
+    		
+			OrderItem orderItem = new OrderItem(product, 1, product.price);
+			
+			items.add(orderItem);
+		}
+    	
+        Order order = OrderFactory.creatOrder(items, address, 1);
 
-        order.stateId = 2;
-        Order order2=new Order();
-        order2.stateId=3;
-        order2.totalPrice=200;
-        OrderAPIImpl orderAPIImp=new OrderAPIImpl();
+        OrderStateOperationAPIImpl orderStateOperationAPIImpl = new OrderStateOperationAPIImpl();
 
 
-        orderAPIImp.saveOrder(order);
+        orderStateOperationAPIImpl.creatOrder(order);
+        orderStateOperationAPIImpl.pay(order);
+        orderStateOperationAPIImpl.shipping(order);
+        orderStateOperationAPIImpl.recived(order);
 
-        System.out.println(order);
+
+        OrderAPI orderAPI = new OrderAPIImpl();
+        orderAPI.getOrderDetailById(order.getId());
 
 
-        Order orderDetailById = orderAPIImp.getOrderDetailById(order.getId());
-
-        System.out.println(orderDetailById);
-
-        List<Order> orderStateById=orderAPIImp.getOrderListByStateId(order.getStateId());
+        List<Order> orderStateById = orderAPI.getOrderListByState(STATE.RECIVED);
         System.out.println(orderStateById);
 
-         orderAPIImp.editOrder(order2);
-         orderAPIImp.removeOrder(order.getId());
-         orderAPIImp.getOrderStateById(order.getStateId());
     }
-    }
+   }
 

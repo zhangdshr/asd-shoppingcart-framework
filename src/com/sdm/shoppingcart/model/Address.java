@@ -14,6 +14,8 @@ public class Address {
     public Address() {
     }
 
+    public String state;
+    public String city;
     /**
      * 
      */
@@ -29,5 +31,15 @@ public class Address {
      */
     public String email;
 
-
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "Address{" +
+                "state=" + state +
+              ", city=" + city +
+              ", desc=" + desc +
+              ", email=" + email +
+              ", phone=" + phone +
+              '}';
+    }
 }

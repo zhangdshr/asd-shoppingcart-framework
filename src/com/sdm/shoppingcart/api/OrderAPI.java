@@ -2,6 +2,7 @@ package com.sdm.shoppingcart.api;
 
 import com.sdm.shoppingcart.model.Order;
 import com.sdm.shoppingcart.model.OrderState;
+import com.sdm.shoppingcart.model.OrderState.STATE;
 
 import java.util.List;
 
@@ -9,11 +10,11 @@ interface OrderAPI {
 
 
 
-	OrderState getOrderStateById(long id);
+	OrderState getOrderStateByOrderId(long id);
 	
 	Order getOrderDetailById(long id);
 
-	List<Order> getOrderListByStateId(long id);
+	List<Order> getOrderListByState(STATE state);
 	
 	void editOrder(Order order);
 	
