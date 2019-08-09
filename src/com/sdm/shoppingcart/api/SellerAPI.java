@@ -1,24 +1,29 @@
 package com.sdm.shoppingcart.api;
 
+import java.util.List;
+
+import com.sdm.shoppingcart.model.Category;
+import com.sdm.shoppingcart.model.Product;
+
 interface SellerAPI {
 
-	void addProduct();
+	void addProduct(Product product);
 	
-	void removeProduct();
+	void removeProduct(long product_id);
 	
-	void editProduct();
+	void editProduct(Product product);
 	
-	void getProductListByCategoryId();
+	List<Product> getProductListByCategoryId(long category_id);
 	
-	void getProductDetailById();
+	Product getProductDetailById(long product_id);
 	
-	void addCategory();
+	void addCategory(Category category);
 	
-	void removeCategory();
+	void removeCategory(long category_id);
 	
-	void editCategory();
+	void editCategory(Category category);
 	
-	void getCategoryList();
+	List<Category> getCategoryList();
 	
 	//...
 
