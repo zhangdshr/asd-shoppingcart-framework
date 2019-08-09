@@ -41,4 +41,17 @@ public class ShoppingcartAPI {
 		}
 		return instanceOrderAPI;
 	}
+	
+	private static volatile UserAPI instanceUserAPI;
+
+	public static UserAPI getInstanceUserAPI() {
+		if (instanceUserAPI == null) {
+			synchronized (UserAPI.class) {
+				if (instanceUserAPI == null) {
+					instanceUserAPI = new UserAPIImpl();
+				}
+			}
+		}
+		return instanceUserAPI;
+	}
 }
