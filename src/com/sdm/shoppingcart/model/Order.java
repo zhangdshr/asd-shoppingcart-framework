@@ -2,6 +2,7 @@ package com.sdm.shoppingcart.model;
 
 
 import com.sdm.shoppingcart.jdbc.db.IDataBaseDomain;
+import com.sdm.shoppingcart.model.OrderState.STATE;
 
 import java.util.*;
 
@@ -40,7 +41,7 @@ public class Order implements IDataBaseDomain {
 
     public ShippingInfo shippingInfo;
 
-    public OrderState orderState;
+    public OrderState orderState = new OrderState(STATE.CONSTRUCT);
     /**
      * 
      */
