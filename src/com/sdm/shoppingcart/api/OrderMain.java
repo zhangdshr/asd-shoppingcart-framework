@@ -30,12 +30,12 @@ public class OrderMain {
     		ProductDao productDao = ProductDao.getInstance();
     		productDao.save(product);
     		
-			OrderItem orderItem = new OrderItem(product, 1, product.price);
+			OrderItem orderItem = new OrderItem(product, 1);
 			
 			items.add(orderItem);
 		}
     	
-        Order order = OrderFactory.creatOrder(items, address, 1);
+        Order order = OrderFactory.creatOrder(items, 6589, address, 1);
 
         OrderStateOperationAPIImpl orderStateOperationAPIImpl = new OrderStateOperationAPIImpl();
 
