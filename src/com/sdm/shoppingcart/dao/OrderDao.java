@@ -92,5 +92,16 @@ public class OrderDao implements InterfaceDao<Order> {
         return orders;
     }
 
+    public List<Order> getOrderListByStateAndBuyerId(STATE state, long userid) {
+        // TODO Auto-generated method stub
 
+        List<Order> orders = new ArrayList<>();
+        for (Order s:getAll()) {
+            if(state == s.orderState.state && userid==s.userId){
+            	orders.add(s);
+            }
+        }
+        DBLog.log("getOrderListByStateId", orders.size());
+        return orders;
+    }
 }

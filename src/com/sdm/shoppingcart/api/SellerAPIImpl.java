@@ -12,9 +12,9 @@ public class SellerAPIImpl implements SellerAPI {
 	private CategoryDao categoryDao = CategoryDao.getInstance();
 
 	@Override
-	public void addProduct(Product product) {
+	public Product addProduct(Product product) {
 		// TODO Auto-generated method stub
-		productDao.save(product);
+		return productDao.save(product);
 	}
 
 	@Override
@@ -27,6 +27,12 @@ public class SellerAPIImpl implements SellerAPI {
 	public void editProduct(Product product) {
 		// TODO Auto-generated method stub
 		productDao.remove(product.id);
+	}
+	
+	@Override
+	public List<Product> getAllProducts() {
+		// TODO Auto-generated method stub
+		return productDao.getAll();
 	}
 
 	@Override
@@ -42,9 +48,9 @@ public class SellerAPIImpl implements SellerAPI {
 	}
 
 	@Override
-	public void addCategory(Category category) {
+	public Category addCategory(Category category) {
 		// TODO Auto-generated method stub
-		categoryDao.save(category);
+		return categoryDao.save(category);
 	}
 
 	@Override

@@ -12,6 +12,8 @@ public class PayOrderState implements IOrderState {
 		// TODO Auto-generated method stub
 		order.orderState = new OrderState(STATE.PAID);
 		OrderDao.getInstance().update(order);
+		
+		stateManager.shipping(order);
 	}
 
 }

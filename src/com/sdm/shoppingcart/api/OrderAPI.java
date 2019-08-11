@@ -15,6 +15,7 @@ interface OrderAPI {
 	Order getOrderDetailById(long id);
 
 	List<Order> getOrderListByState(STATE state);
+	List<Order> getOrderListByStateAndBuyerId(STATE state, long userid);
 	
 	void editOrder(Order order);
 	

@@ -12,24 +12,27 @@ public class StateManager implements OrderStateOperationAPI {
 	private ReciveOrderState reciveOrderState = new ReciveOrderState();
 	
 	@Override
-	public void creatOrder(Order order) {
+	public void creatOrder(Order order) throws Exception {
 		// TODO Auto-generated method stub
 		if (order.orderState.state == STATE.CONSTRUCT) {
 			creatOrderState.change(order, this);
 			System.out.println("operation a " + order.orderState.state + " Order");
 		} else {
 			System.out.println("Error: Order has Created\n   " + order.orderState.state);
+			throw new Exception("Error: Order has Created");
 		}
 	}
 
 	@Override
-	public void pay(Order order) {
+	public void pay(Order order) throws Exception {
 		// TODO Auto-generated method stub
 		if (order.orderState.state == STATE.CREATED) {
 			payOrderState.change(order, this);
 			System.out.println("operation a " + order.orderState.state + " Order");
 		} else {
-			System.out.println("Error: Order has Paid\n   " + order.orderState.state);
+			String string = "Error:  Order's state is not created";
+			System.out.println(string + "\n   " + order.orderState.state);
+			throw new Exception(string);
 		}
 	}
 
@@ -45,13 +48,14 @@ public class StateManager implements OrderStateOperationAPI {
 	}
 
 	@Override
-	public void recived(Order order) {
+	public void recived(Order order) throws Exception {
 		// TODO Auto-generated method stub
 		if (order.orderState.state == STATE.SHIPPMENT) {
 			reciveOrderState.change(order, this);
 			System.out.println("operation a " + order.orderState.state + " Order");
 		} else {
-			System.out.println("Error: Order has Shipped\n   " + order.orderState.state);
+			System.out.println("Error: Order's state is not shipping\n   " + order.orderState.state);
+			throw new Exception("Error: Order's state is not shipping");
 		}
 	}
 	

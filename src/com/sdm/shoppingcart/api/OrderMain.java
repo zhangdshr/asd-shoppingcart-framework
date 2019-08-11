@@ -40,10 +40,10 @@ public class OrderMain {
         OrderStateOperationAPIImpl orderStateOperationAPIImpl = new OrderStateOperationAPIImpl();
 
 
-        orderStateOperationAPIImpl.creatOrder(order);
-        orderStateOperationAPIImpl.pay(order);
-        orderStateOperationAPIImpl.shipping(order);
-        orderStateOperationAPIImpl.recived(order);
+//        orderStateOperationAPIImpl.creatOrder(order);
+//        orderStateOperationAPIImpl.pay(order);
+//        orderStateOperationAPIImpl.shipping(order);
+//        orderStateOperationAPIImpl.recived(order);
 
 
         OrderAPI orderAPI = new OrderAPIImpl();

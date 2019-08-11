@@ -14,7 +14,7 @@ interface BuyerAPI {
 
 	void editProductCountById(CartItem cartItem);
 
-	void getCartItemListInShoppingList(long userId);
+	List<CartItem> getCartItemListInShoppingList(long userId);
 
 	// ...
 

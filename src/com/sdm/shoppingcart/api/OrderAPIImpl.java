@@ -33,6 +33,12 @@ public class OrderAPIImpl implements OrderAPI  {
 		return OrderDao.getInstance().getOrderListByState(state);
 	}
 	@Override
+	public List<Order> getOrderListByStateAndBuyerId(STATE state, long userid) {
+		// TODO Auto-generated method stub
+		return OrderDao.getInstance().getOrderListByStateAndBuyerId(state, userid);
+	}
+	
+	@Override
 	public void editOrder(Order order) {
 		// TODO Auto-generated method stub
 		OrderDao.getInstance().update(order);

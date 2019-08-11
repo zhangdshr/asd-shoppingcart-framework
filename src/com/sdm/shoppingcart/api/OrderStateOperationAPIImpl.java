@@ -7,7 +7,7 @@ public class OrderStateOperationAPIImpl implements OrderStateOperationAPI {
 
 	private StateManager stateManager = new StateManager();
 	@Override
-	public void creatOrder(Order order) {
+	public void creatOrder(Order order) throws Exception{
 		// TODO Auto-generated method stub
 		stateManager.creatOrder(order);
 	}
@@ -25,7 +25,7 @@ public class OrderStateOperationAPIImpl implements OrderStateOperationAPI {
 	}
 
 	@Override
-	public void recived(Order order) {
+	public void recived(Order order) throws Exception {
 		// TODO Auto-generated method stub
 		stateManager.recived(order);
 	}

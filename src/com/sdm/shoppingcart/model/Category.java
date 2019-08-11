@@ -10,6 +10,9 @@ public class Category implements IDataBaseDomain {
     /**
      * Default constructor
      */
+	public Category() {
+		// TODO Auto-generated constructor stub
+	}
     public Category(String name) {
     	this.name = name;
     }

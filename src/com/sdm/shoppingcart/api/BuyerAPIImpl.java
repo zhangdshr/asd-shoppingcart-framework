@@ -48,9 +48,9 @@ public class BuyerAPIImpl implements BuyerAPI {
 	}
 
 	@Override
-	public void getCartItemListInShoppingList(long userId) {
+	public List<CartItem> getCartItemListInShoppingList(long userId) {
 		// TODO Auto-generated method stub
-		CartItemDao.getInstance().getAllByUserId(userId);
+		return CartItemDao.getInstance().getAllByUserId(userId);
 	}
 
 	@Override
