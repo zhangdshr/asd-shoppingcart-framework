@@ -13,7 +13,7 @@ public class OrderStateOperationAPIImpl implements OrderStateOperationAPI {
 	}
 
 	@Override
-	public void pay(Order order) {
+	public void pay(Order order) throws Exception {
 		// TODO Auto-generated method stub
 		stateManager.pay(order);
 	}
